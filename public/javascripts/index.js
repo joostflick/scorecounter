@@ -1,6 +1,9 @@
 const team1 = document.getElementById('scoreTeam1')
 const team2 = document.getElementById('scoreTeam2')
 
+const status = document.getElementById('status')
+status.innerText = 'Online/offline support'
+
 const buttonTeam1Plus = document.getElementById('plusTeam1')
 const buttonTeam1Minus = document.getElementById('minusTeam1')
 const buttonTeam2Plus = document.getElementById('plusTeam2')
@@ -9,12 +12,12 @@ const buttonTeam2Minus = document.getElementById('minusTeam2')
 var scoreTeam1 = document.getElementById('scoreTeam1').innerText
 var scoreTeam2 = document.getElementById('scoreTeam2').innerText
 
-var formPlusTeam1 = document.getElementById('formPlusTeam1')
-var formMinusTeam1 = document.getElementById('formMinusTeam1')
-var formPlusTeam2 = document.getElementById('formPlusTeam2')
-var formMinusTeam2 = document.getElementById('formMinusTeam2')
+// var formPlusTeam1 = document.getElementById('formPlusTeam1')
+// var formMinusTeam1 = document.getElementById('formMinusTeam1')
+// var formPlusTeam2 = document.getElementById('formPlusTeam2')
+// var formMinusTeam2 = document.getElementById('formMinusTeam2')
 
-function post(path, params) {
+function get(path, params) {
   method = 'get' // Set method to post by default if not specified.
 
   // The rest of this code assumes you are not using a library.
@@ -39,6 +42,7 @@ function post(path, params) {
 }
 
 function updateOffline() {
+  status.innerText = 'Currently offline'
   console.log('offline')
   buttonTeam1Plus.type = 'button'
   buttonTeam1Minus.type = 'button'
@@ -102,10 +106,11 @@ function updateOffline() {
 }
 
 function updateOnline() {
+  status.innerText = 'Currently online'
   console.log('online')
   console.log('team 1:' + scoreTeam1)
   console.log('team 2:' + scoreTeam2)
-  post('/', { scoreTeam1: scoreTeam1, scoreTeam2: scoreTeam2 })
+  get('/', { scoreTeam1: scoreTeam1, scoreTeam2: scoreTeam2 })
   buttonTeam1Plus.type = 'submit'
   buttonTeam1Minus.type = 'submit'
   buttonTeam2Plus.type = 'submit'

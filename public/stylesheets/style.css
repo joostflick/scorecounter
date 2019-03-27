@@ -12,7 +12,7 @@ body {
 body {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 45% 10% 45%;
+  grid-template-rows: 5% 45% 10% 40%;
   margin: 0;
 }
 
@@ -44,6 +44,14 @@ h2 {
 .midtext {
   grid-column-end: span 2;
   text-align: center;
+  color: white;
+  background-color: var(--color-main, blue);
+}
+
+.messages {
+  grid-column-end: span 2;
+  text-align: center;
+  color: white;
   background-color: var(--color-main, blue);
 }
 

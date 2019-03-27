@@ -14,8 +14,8 @@ var formMinusTeam1 = document.getElementById('formMinusTeam1')
 var formPlusTeam2 = document.getElementById('formPlusTeam2')
 var formMinusTeam2 = document.getElementById('formMinusTeam2')
 
-function post(path, params, method) {
-  method = method || 'post' // Set method to post by default if not specified.
+function post(path, params) {
+  method = 'get' // Set method to post by default if not specified.
 
   // The rest of this code assumes you are not using a library.
   // It can be made less wordy if you use one.
@@ -105,14 +105,7 @@ function updateOnline() {
   console.log('online')
   console.log('team 1:' + scoreTeam1)
   console.log('team 2:' + scoreTeam2)
-  //   const Http = new XMLHttpRequest()
-  //   const url = '/update'
-  //   Http.open('POST', url)
-  //   Http.send()
-  //   Http.onreadystatechange = e => {
-  //     console.log(Http.responseText)
-  //   }
-  post('/', { scoreTeam1: scoreTeam1, scoreTeam2: scoreTeam2 }, 'get')
+  post('/', { scoreTeam1: scoreTeam1, scoreTeam2: scoreTeam2 })
   buttonTeam1Plus.type = 'submit'
   buttonTeam1Minus.type = 'submit'
   buttonTeam2Plus.type = 'submit'

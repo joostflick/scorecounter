@@ -2,7 +2,7 @@ const team1 = document.getElementById('scoreTeam1')
 const team2 = document.getElementById('scoreTeam2')
 
 const status = document.getElementById('status')
-status.innerText = 'Online/offline support'
+status.innerText = 'Currently online & offline supported'
 
 const buttonTeam1Plus = document.getElementById('plusTeam1')
 const buttonTeam1Minus = document.getElementById('minusTeam1')
@@ -106,7 +106,6 @@ function updateOffline() {
 }
 
 function updateOnline() {
-  status.innerText = 'Currently online'
   console.log('online')
   console.log('team 1:' + scoreTeam1)
   console.log('team 2:' + scoreTeam2)

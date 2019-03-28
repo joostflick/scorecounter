@@ -16,19 +16,8 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use((req, res, next) => {
-  res.setHeader('Cache-Control', 'max-age=' + 365 * 24 * 60 * 60)
-  next()
-})
-
 let team1Points = 0
 let team2Points = 0
-
-app.get('/update'),
-  (req, res) => {
-    console.log(req)
-    res.render('index', { team1Points: team1Points, team2Points: team2Points })
-  }
 
 app.get('/', (req, res) => {
   if (req.query.scoreTeam1) {
@@ -40,6 +29,12 @@ app.get('/', (req, res) => {
 
   res.render('index', { team1Points: team1Points, team2Points: team2Points })
 })
+
+app.get('/update'),
+  (req, res) => {
+    console.log(req)
+    res.render('index', { team1Points: team1Points, team2Points: team2Points })
+  }
 
 app.post('/plus-team1', (req, res) => {
   team1Points++

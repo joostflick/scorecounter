@@ -4,6 +4,7 @@ score bijhouden
 
 Functional: score bijhouden
 Pleasurable: overview van game, delen
+nice to have: score blijft bewaard
 
 ## features to be added:
 

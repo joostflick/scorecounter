@@ -12,6 +12,8 @@ const buttonTeam2Minus = document.getElementById('minusTeam2')
 var scoreTeam1 = document.getElementById('scoreTeam1').innerText
 var scoreTeam2 = document.getElementById('scoreTeam2').innerText
 
+var online = true
+
 // var formPlusTeam1 = document.getElementById('formPlusTeam1')
 // var formMinusTeam1 = document.getElementById('formMinusTeam1')
 // var formPlusTeam2 = document.getElementById('formPlusTeam2')
@@ -39,7 +41,31 @@ function get(path, params) {
   form.submit()
 }
 
+function resetScore() {
+  scoreTeam1 = 0
+  scoreTeam2 = 0
+
+  team1.innerText = scoreTeam1
+  team2.innerText = scoreTeam2
+  if (online === true) {
+    console.log(scoreTeam1 + scoreTeam2)
+    get('/', { scoreTeam1: scoreTeam1, scoreTeam2: scoreTeam2 })
+  } else {
+    console.log(online)
+  }
+}
+
+const resetButton = document.querySelector('.reset-btn')
+resetButton.addEventListener(
+  'click',
+  function() {
+    resetScore()
+  },
+  false
+)
+
 function updateOffline() {
+  online = false
   status.innerText = 'Currently offline'
   console.log('offline')
   buttonTeam1Plus.type = 'button'
@@ -104,8 +130,9 @@ function updateOffline() {
 }
 
 function updateOnline() {
+  online = true
   console.log('online')
-  console.log('team 1:' + scoreTeam1)
+  console.log('team 1:' + team1)
   console.log('team 2:' + scoreTeam2)
   get('/', { scoreTeam1: scoreTeam1, scoreTeam2: scoreTeam2 })
   buttonTeam1Plus.type = 'submit'

@@ -18,10 +18,8 @@ var scoreTeam2 = document.getElementById('scoreTeam2').innerText
 // var formMinusTeam2 = document.getElementById('formMinusTeam2')
 
 function get(path, params) {
-  method = 'get' // Set method to post by default if not specified.
+  method = 'get'
 
-  // The rest of this code assumes you are not using a library.
-  // It can be made less wordy if you use one.
   var form = document.createElement('form')
   form.setAttribute('method', method)
   form.setAttribute('action', path)

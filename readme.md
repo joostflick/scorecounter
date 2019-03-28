@@ -1,3 +1,10 @@
+## Core functionality
+
+score bijhouden
+
+Functional: score bijhouden
+Pleasurable: overview van game, delen
+
 ## features to be added:
 
 - add teams to app
@@ -5,6 +12,8 @@
 - animation on score change client side
 - email spelverloop
 - syncen wanneer internetverbinding wegvalt
+- localhost
+- caching
 
 - PE met betrekking tot feature detection
 

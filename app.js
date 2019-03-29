@@ -30,11 +30,27 @@ app.get('/', (req, res) => {
   res.render('index', { team1Points: team1Points, team2Points: team2Points })
 })
 
+app.get('/updateScore', (req, res) => {
+  if (req.query.scoreTeam1) {
+    team1Points = req.query.scoreTeam1
+    team2Points = req.query.scoreTeam2
+  } else {
+    console.log('No offline data retrieved')
+  }
+  res.redirect('/')
+})
+
 app.get('/update'),
   (req, res) => {
     console.log(req)
     res.render('index', { team1Points: team1Points, team2Points: team2Points })
   }
+
+app.post('/reset-score', (req, res) => {
+  team1Points = 0
+  team2Points = 0
+  res.render('index', { team1Points: team1Points, team2Points: team2Points })
+})
 
 app.post('/plus-team1', (req, res) => {
   team1Points++

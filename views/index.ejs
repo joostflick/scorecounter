@@ -19,7 +19,7 @@
 		</section>
 		<section class="midtext team">
 			<h3>Wedstrijd 1</h3>
-			<a href="mailto:uwemail@uwemail.com?subject=Wedstrijdscore&body=Team+1:+<%=team1Points%>+Team+2:+<%=team2Points%>"> E-mail this score to me </a>
+			<a id="mailLink" href="mailto:uwemail@uwemail.com?subject=Wedstrijdscore&body=Team+1:+<%=team1Points%>+Team+2:+<%=team2Points%>"> E-mail this score to me </a>
 		</section>
 		<section class="team team1Control team1">
       <h2>Score:</h2>
@@ -38,8 +38,10 @@
       <form method="POST" action="/minus-team2" id='formMinusTeam2'>
       <button type='submit' class="score" id='minusTeam2'>-</button>
 			</form>
-			<button class="reset-btn">RESET</button>
 		</section>
+		<form method="POST" action="/reset-score" id="formreset">
+		<button type='submit'class="reset-btn" id='resetButton'>RESET</button>
+		</form>
 	</body>
 	<script src="./javascripts/index.js"></script>
 </html>

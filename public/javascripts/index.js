@@ -9,6 +9,10 @@ const buttonTeam1Minus = document.getElementById('minusTeam1')
 const buttonTeam2Plus = document.getElementById('plusTeam2')
 const buttonTeam2Minus = document.getElementById('minusTeam2')
 
+let emailLink = document.getElementById('mailLink')
+
+const buttonReset = document.getElementById('resetButton')
+
 var scoreTeam1 = document.getElementById('scoreTeam1').innerText
 var scoreTeam2 = document.getElementById('scoreTeam2').innerText
 
@@ -44,7 +48,8 @@ function get(path, params) {
 function resetScore() {
   scoreTeam1 = 0
   scoreTeam2 = 0
-
+  emailLink.href =
+    'mailto:uwemail@uwemail.com?subject=Wedstrijdscore&body=Team+1:+0+Team+2:+0'
   team1.innerText = scoreTeam1
   team2.innerText = scoreTeam2
   if (online === true) {
@@ -54,24 +59,23 @@ function resetScore() {
     console.log(online)
   }
 }
+init()
 
-const resetButton = document.querySelector('.reset-btn')
-resetButton.addEventListener(
-  'click',
-  function() {
-    resetScore()
-  },
-  false
-)
-
-function updateOffline() {
-  online = false
-  status.innerText = 'Currently offline'
-  console.log('offline')
+function init() {
   buttonTeam1Plus.type = 'button'
   buttonTeam1Minus.type = 'button'
   buttonTeam2Plus.type = 'button'
   buttonTeam2Minus.type = 'button'
+
+  buttonReset.type = 'button'
+
+  resetButton.addEventListener(
+    'click',
+    function() {
+      resetScore()
+    },
+    false
+  )
 
   buttonTeam1Plus.addEventListener(
     'click',
@@ -101,31 +105,83 @@ function updateOffline() {
     },
     false
   )
+}
 
-  function team1Plus() {
-    console.log('team1Plus-offline')
-    scoreTeam1++
-    team1.innerText = scoreTeam1
+function updateOffline() {
+  online = false
+  status.innerText = 'Currently offline'
+  console.log('offline')
+}
+
+function team1Plus() {
+  console.log('team1Plus-offline')
+  scoreTeam1++
+  if (online == true) {
+    get('/updateScore', { scoreTeam1: scoreTeam1, scoreTeam2: scoreTeam2 })
   }
-  function team1Minus() {
-    if (scoreTeam1 > 0) {
-      scoreTeam1--
-    } else {
-      scoreTeam1 = scoreTeam1
-    }
-    team1.innerText = scoreTeam1
+  emailLink.href =
+    'mailto:uwemail@uwemail.com?subject=Wedstrijdscore&body=Team+1:+' +
+    scoreTeam1 +
+    '+Team+2:+' +
+    scoreTeam2
+  team1.innerText = scoreTeam1
+}
+function team1Minus() {
+  if (scoreTeam1 > 0) {
+    scoreTeam1--
+  } else {
+    scoreTeam1 = scoreTeam1
   }
-  function team2Plus() {
-    scoreTeam2++
-    team2.innerText = scoreTeam2
+  if (online == true) {
+    get('/updateScore', { scoreTeam1: scoreTeam1, scoreTeam2: scoreTeam2 })
   }
-  function team2Minus() {
-    if (scoreTeam2 > 0) {
-      scoreTeam2--
-    } else {
-      scoreTeam2 = scoreTeam2
-    }
-    team2.innerText = scoreTeam2
+  emailLink.href =
+    'mailto:uwemail@uwemail.com?subject=Wedstrijdscore&body=Team+1:+' +
+    scoreTeam1 +
+    '+Team+2:+' +
+    scoreTeam2
+  team1.innerText = scoreTeam1
+}
+function team2Plus() {
+  scoreTeam2++
+  if (online == true) {
+    get('/updateScore', { scoreTeam1: scoreTeam1, scoreTeam2: scoreTeam2 })
+  }
+  emailLink.href =
+    'mailto:uwemail@uwemail.com?subject=Wedstrijdscore&body=Team+1:+' +
+    scoreTeam1 +
+    '+Team+2:+' +
+    scoreTeam2
+  team2.innerText = scoreTeam2
+}
+function team2Minus() {
+  if (scoreTeam2 > 0) {
+    scoreTeam2--
+  } else {
+    scoreTeam2 = scoreTeam2
+  }
+  if (online == true) {
+    get('/updateScore', { scoreTeam1: scoreTeam1, scoreTeam2: scoreTeam2 })
+  }
+  emailLink.href =
+    'mailto:uwemail@uwemail.com?subject=Wedstrijdscore&body=Team+1:+' +
+    scoreTeam1 +
+    '+Team+2:+' +
+    scoreTeam2
+  team2.innerText = scoreTeam2
+}
+
+window.onkeyup = function(e) {
+  var key = e.keyCode ? e.keyCode : e.which
+
+  if (key == 38) {
+    team2Plus()
+  } else if (key == 40) {
+    team2Minus()
+  } else if (key == 87) {
+    team1Plus()
+  } else if (key == 83) {
+    team1Minus()
   }
 }
 

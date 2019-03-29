@@ -6,7 +6,13 @@ body {
 :root {
   --color-team1: red;
   --color-team2: green;
-  --color-main: blue;
+  --color-main: black;
+}
+
+.reset-btn {
+  position: absolute;
+  top: 51%;
+  left: 1%;
 }
 
 body {

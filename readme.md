@@ -1,3 +1,5 @@
+![screenshot](./screenshot.png)
+
 ## Core functionality
 
 This application allows a user to keep track of score, unhindered by the absence of internet and/or javascript.
@@ -64,13 +66,5 @@ Although ugly, the css theme uses color variables which have fallbacks in case t
 - add teams to app
 - team name, scoring, game name, game time, amount of games
 - animation on score change client side
-- email spelverloop
-- syncen wanneer internetverbinding wegvalt
 - localhost
 - caching
-
-- PE met betrekking tot feature detection
-
-- clientside / html
-
-- serverside

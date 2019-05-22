@@ -23,7 +23,15 @@ This application allows a user to keep track of score, unhindered by the absence
 
 ## Device lab
 
-Responsiveness is good, usable on every device. No colors on one older phone, but still usable.
+![screenshot](./devicelab.jpg)
+Responsiveness is good, usable on every device. No colors on one older phone, but still usable, even on the e-reader because the app doesn't require javascript to work.
+
+On smaller screens the 4 boxes of the grid are placed underneath each other, while on bigger screens all 4 boxes are in one screen.
+
+Improvements that could be made based on this test:
+- Investigate the old phone not loading the css
+- Slightly bigger button for large screen touchscreen devices
+- Numbers are the most important information on the page so those could be emphasized more on bigger screens
 
 ## Accesibility
 
